@@ -7,23 +7,20 @@ public class KeyScan {
 	public static void main(String[] args) {
 		int a;
 		float f;
+		double d;
 		String s;
 		
 		f= (float) readValue("numero real",'f');
 		a= (int) readValue("numero entero",'i');
+		d= (double) readValue("numero doble",'d');
 		s = (String) readValue("cadena",'s');
 		System.out.println(a);
 		System.out.println(f);
+		System.out.println(d);
 		System.out.println(s);
 	}
 
-	public int readInt() {
-		
-		Scanner sc1 = new Scanner(System.in);
-		
-		return sc1.nextInt();
-	}
-	
+
 	public static Object readValue(String msg,char c) {
 		
 		String s="";
@@ -33,9 +30,7 @@ public class KeyScan {
 		{ // bucle
 			System.out.print(msg+"?");
 			s =sc.nextLine();
-			//sc.close();
-			switch (c) {
-				
+			switch (c) {			
 				case 'i':
 					if (parse(s,c))
 					return Integer.parseInt(s);
