@@ -28,24 +28,24 @@ public class KeyScan {
 		//Scanner sc = new Scanner(System.in);
 		while (!termine)
 		{ // bucle
-			System.out.print(msg+"?");
+			System.out.print(msg+"? ");
 			s =sc.nextLine();
-			switch (c) {			
-				case 'i':
-					if (parse(s,c))
-					return Integer.parseInt(s);
-				case 'f':
-					if (parse(s,c))
-					return Float.parseFloat(s);
-				case 'd':
-					if (parse(s,c))
-					return Double.parseDouble(s);				
-				case 's':
-					return s;
-				default:
-					termine = true;
-			} // switch
-			System.out.println("Formato de entrada no válida,\nVuelva a introducir valor:");
+			if (parse(s,c)) {
+				switch (c) {			
+					case 'i':
+						return Integer.parseInt(s);
+					case 'f':
+						return Float.parseFloat(s);
+					case 'd':
+						return Double.parseDouble(s);				
+					case 's':
+						return s;
+					default:
+						termine = true;
+				} // switch
+			} // comprueba patrón
+			
+			System.out.println("Entrada no válida,\nVuelva a introducir valor:");
 		}	
 			return null;
 	} // readValue
@@ -53,7 +53,9 @@ public class KeyScan {
 	public static boolean parse(String _s, char _tipo) {
 		boolean result = false;
 		String patron ="";
+		
 		switch(_tipo ) {
+		case 's': return true;
 		case 'i':
 			patron ="^-?\\d+$";
 			break;
