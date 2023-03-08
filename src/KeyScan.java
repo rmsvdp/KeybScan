@@ -1,23 +1,34 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
+/**
+ * Clase para lectura desde teclado de tipos primitivos
+ * @author RMS
+ *
+ */
 public class KeyScan {
 
+	/**
+	 * Objeto scanner para leer de teclado. Se declara static para que no se cierre el stream.
+	 */
 	public static Scanner sc = new Scanner(System.in);
-		
+	/**
+	 * Constructor para instanciar el objeto.	
+	 */
 	public KeyScan() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-/*
- 		Ejemplo de utilización :
 
-*/
+	/**
+	 * Pide por consola la entrada de un valor por parte del usuario
+	 * @param msg
+	 * @param c
+	 * @return
+	 */
 	public  Object readValue(String msg,char c) {
 		
 		String s="";
 		boolean termine = false;
-		//Scanner sc = new Scanner(System.in);
+
 		while (!termine)
 		{ // bucle
 			System.out.print(msg);
