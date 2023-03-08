@@ -4,34 +4,31 @@ import java.util.regex.Pattern;
 public class KeyScan {
 
 	public static Scanner sc = new Scanner(System.in);
-	public static void main(String[] args) {
-		int a;
-		float f;
-		double d;
-		String s;
 		
-		f= (float) readValue("numero real",'f');
-		a= (int) readValue("numero entero",'i');
-		d= (double) readValue("numero doble",'d');
-		s = (String) readValue("cadena",'s');
-		System.out.println(a);
-		System.out.println(f);
-		System.out.println(d);
-		System.out.println(s);
+	public KeyScan() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+/*
+ 		Ejemplo de utilización :
 
-
-	public static Object readValue(String msg,char c) {
+*/
+	public  Object readValue(String msg,char c) {
 		
 		String s="";
 		boolean termine = false;
 		//Scanner sc = new Scanner(System.in);
 		while (!termine)
 		{ // bucle
-			System.out.print(msg+"? ");
+			System.out.print(msg);
+			if (c=='b') System.out.print("(S)í,(N)o");
+			System.out.print("? ");
 			s =sc.nextLine();
 			if (parse(s,c)) {
-				switch (c) {			
+				switch (c) {
+				    case 'b':
+				    	s=s.toUpperCase();
+				    	return (s.equals("S"))?true:false;
 					case 'i':
 						return Integer.parseInt(s);
 					case 'f':
@@ -43,14 +40,13 @@ public class KeyScan {
 					default:
 						termine = true;
 				} // switch
-			} // comprueba patrón
-			
+			} // comprueba patrón		
 			System.out.println("Entrada no válida,\nVuelva a introducir valor:");
 		}	
 			return null;
 	} // readValue
 	
-	public static boolean parse(String _s, char _tipo) {
+	private boolean parse(String _s, char _tipo) {
 		boolean result = false;
 		String patron ="";
 		
@@ -58,6 +54,10 @@ public class KeyScan {
 		case 's': return true;
 		case 'i':
 			patron ="^-?\\d+$";
+			break;
+		case 'b':
+			_s = _s.toUpperCase();
+			patron ="^[S,N]$";
 			break;
 		case 'd':
 		case 'f':
